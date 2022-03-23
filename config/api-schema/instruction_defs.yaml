@@ -1,0 +1,10 @@
+config:
+_defs:
+  middleware:
+    preauths: &middleware_preauth
+     - com.xyz.createSpan:
+    validations:
+      - __json_schema:
+          type: object
+    finally: &middleware_finally
+      - com.xyz.endSpan:

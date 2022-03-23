@@ -1,0 +1,8 @@
+---
+domainName: lending
+microserviceName: credit_card
+enabled_channels:
+- REST
+- messageBus
+- socket
+

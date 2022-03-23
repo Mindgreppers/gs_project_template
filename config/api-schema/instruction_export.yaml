@@ -1,0 +1,23 @@
+config:
+_defs:
+  middleware:
+    preauths: &middleware_preauth
+      - com.abc.tokenValidate:
+    validations:
+      - __json_schema:
+          type: object
+    finally: &middleware_finally
+      - com.abc.endSpan:
+
+com:
+  abc:
+    helloWorld:
+      sync: 
+        REST: 
+          method_type: 'GET'
+        gRpc:
+      async:
+        messageBus:
+        socket:
+
+
