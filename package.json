@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "PORT=3000 nodemon gs_service/dist/app.js",
+    "build": "cp -r src/* gs_service/src/ && cd gs_service && npm run build"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "nodemon": "^2.0.15"
+  }
 }

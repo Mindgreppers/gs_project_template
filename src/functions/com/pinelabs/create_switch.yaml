@@ -6,19 +6,19 @@ tasks:
     cases:
       FIRST:
         id: 1st
-        fn: com.gs.transform
+        fn: com.gs.return
         args: "'case - 1'"
       SECOND:
         id: 2nd
-        fn: com.gs.transform
+        fn: com.gs.return
         args: "'case - 2'"
       THIRD:
         id: 3rd
-        fn: com.gs.transform
+        fn: com.gs.return
         args: "'case - 3'"
     defaults:
       id: default
-      fn: com.gs.transform
+      fn: com.gs.return
       args: "'case - default'"
   - id: step2
     fn: com.gs.transform
