@@ -1,14 +1,20 @@
-'com.abc.do_kyc.{bank_id}.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn:
-  data: &data_config
+'/do_kyc/idfc.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
+  fn: com.pinelabs.create_hdfc_account
+  data: 
     examples: # <string, ExampleObject>
     schema:
       body: 
         description:
         required: # default value is false
         content:
-          '{content_type}': # For ex. application/json application/xml
-            schema: #json-schema object. 
+          application/json: # For ex. application/json application/xml
+            schema: 
+              type: object
+              properties:
+                Gender: 
+                  type: string
+              #additionalProperties: false
+              #required: [id]
             examples: # <string, ExampleObject>
               '{example_name}':
                 summary:
@@ -23,12 +29,55 @@
           allow_empty_value: false
           description:
           schema:
+            type: string
           examples:
   responses: 
-    '{status_code}': *data_config
+    200:
+      examples: # <string, ExampleObject>
+      schema:
+        data: 
+          description:
+          required: # default value is false
+          content:
+            application/json: # For ex. application/json application/xml
+              schema: 
+                type: object
+                properties:
+                  application_id: 
+                    type: string
+                additionalProperties: false
+                required: [application_id]
+              examples: # <string, ExampleObject>
+                example1:
+                  summary:
+                  description:
+                  value: 
+                    application_id: PRM20478956N
+                  external_value:
+              encoding:
+    400:
+      examples: # <string, ExampleObject>
+      schema:
+        data: 
+          description:
+          required: # default value is false
+          content:
+            application/json: # For ex. application/json application/xml
+              schema: 
+                type: object
+                properties:
+                  lender_response_code: 
+                    type: string
+              examples: # <string, ExampleObject>
+                example1:
+                  summary:
+                  description:
+                  value: 
+                    lender_response_code: E001
+                  external_value:
+              encoding:
 
-
-# A note on compoenents
+# A note on components
 
 # Components
 # We use components like open api spec, to define the reusable components across the following categories
