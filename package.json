@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "PORT=3000 nodemon gs_service/dist/app.js",
     "clean": "cd gs_service && npm run clean",
-    "build": "rsync --delete -rv src/ gs_service/project && npm i && cd gs_service && npm run build"
+    "build": "mkdir -p  gs_service/project && rsync --delete -rv src/ gs_service/project && npm i && cd gs_service && npm run build"
   },
   "author": "",
   "license": "ISC",
