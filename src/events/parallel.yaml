@@ -25,7 +25,7 @@
       params: # can come from path, query, headers
         - name: bank_id
           in: path # same as open api spec: one of cookie, path, query, header
-          required: true
+          required: false
           allow_empty_value: false
           description:
           schema:
