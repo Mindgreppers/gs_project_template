@@ -12,7 +12,7 @@
               type: object
               properties:
                 Gender: 
-                  type: string
+                  type: array
               #additionalProperties: false
               #required: [id]
             examples: # <string, ExampleObject>
