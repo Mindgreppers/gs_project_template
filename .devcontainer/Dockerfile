@@ -1,9 +1,9 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/javascript-node/.devcontainer/base.Dockerfile
 
 # [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 16, 14, 12, 16-bullseye, 14-bullseye, 12-bullseye, 16-buster, 14-buster, 12-buster
-ARG VARIANT="16.14.2-slim"
+ARG VARIANT="base"
 
-FROM node:$VARIANT
+FROM adminmindgrep/es-graph:$VARIANT
 
 WORKDIR /usr/src/app
 
