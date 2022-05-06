@@ -33,3 +33,6 @@ package-lock.json
 project
 
 dist
+
+gs_service/
+
