@@ -1,13 +1,10 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/javascript-node/.devcontainer/base.Dockerfile
 
 # [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 16, 14, 12, 16-bullseye, 14-bullseye, 12-bullseye, 16-buster, 14-buster, 12-buster
-ARG VARIANT="base"
+ARG VARIANT="latest"
 
-FROM adminmindgrep/es-graph:$VARIANT
+FROM adminmindgrep/gs_service:$VARIANT
 
-WORKDIR /usr/src/app
-
-RUN apt update && apt install rsync cmake g++ -y && rm -rf /var/cache/apt/* && rm -rf /var/log/apt
 
 # RUN cd /workspaces/gs_project_template && rsync --delete -rv src/ gs_service/project && npm install && \
 #     cd gs_service && cp -r project/* src/* build/  && \
