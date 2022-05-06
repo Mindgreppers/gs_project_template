@@ -1,3 +1,2 @@
 apiVersion: "1.0"
-pino:
-    level: "debug"
+log_level: "debug"
