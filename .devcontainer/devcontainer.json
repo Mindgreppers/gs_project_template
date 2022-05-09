@@ -31,7 +31,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "rm -f /workspace/development/app/gs_service && ln -s /workspace/development/gs_service /workspace/development/app",
+	"postCreateCommand": "rm -rf /workspace/development/app/gs_service/ && ln -s /workspace/development/gs_service /workspace/development/app",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/development/app,type=bind,consistency=cached",
 	"workspaceFolder": "/workspace/development/app",
 	"updateRemoteUserUID": true,
