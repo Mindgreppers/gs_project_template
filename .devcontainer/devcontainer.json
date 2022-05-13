@@ -1,47 +1,22 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/javascript-node
 {
-	"name": "GS_Template",
-	"forwardPorts": [3000],
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 16, 14, 12.
-		// Append -bullseye or -buster to pin to an OS version.
-		// Use -bullseye variants on local arm64/Apple Silicon.
-		"args": { "VARIANT": "latest" }
-	},
-
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.profiles.linux": {
-			"dev bash": {
-			  "path": "/bin/bash"
-			}
-	},
-	"terminal.integrated.defaultProfile.linux": "dev bash",
-    "debug.node.autoAttach": "disabled",
-	},
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
+    "name": "GS Template",
+    "forwardPorts": [3000],
+    "remoteUser": "dev",
+    "settings": {
+      "terminal.integrated.profiles.linux": {
+        "node bash": {
+          "path": "/bin/bash"
+        }
+      },
+      "terminal.integrated.defaultProfile.linux": "node bash",
+      "debug.node.autoAttach": "disabled"
+    },
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "node",
+    "workspaceFolder": "/workspace/development/app",
+    "shutdownAction": "stopCompose",
+    "extensions": [
 		"dbaeumer.vscode-eslint",
 		"emeraldwalk.RunOnSave"
-	],
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "rm -rf /workspace/development/app/gs_service/ && ln -s /workspace/development/gs_service /workspace/development/app",
-	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/development/app,type=bind,consistency=cached",
-	"workspaceFolder": "/workspace/development/app",
-	"updateRemoteUserUID": true,
-	"shutdownAction": "stopContainer",
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "dev",
-	"containerUser": "dev",
-	"features": {
-		"git": "os-provided",
-		"git-lfs": "latest",
-		"github-cli": "latest"
-	}
+    ]
 }
