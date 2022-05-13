@@ -1,5 +1,5 @@
-'/another_workflow.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.pinelabs.another_wf
+'/sub_wf.http.post': 
+  fn: com.pinelabs.sub_wf
   data: 
     examples: # <string, ExampleObject>
     schema:
@@ -22,15 +22,6 @@
                 value: # anyGSCLoudEvent
                 external_value:
             encoding:
-      params: # can come from path, query, headers
-        - name: bank_id
-          in: query # same as open api spec: one of cookie, path, query, header
-          required: false
-          allow_empty_value: false
-          description:
-          schema:
-            type: string
-          examples:
   responses: 
     200:
       examples: # <string, ExampleObject>

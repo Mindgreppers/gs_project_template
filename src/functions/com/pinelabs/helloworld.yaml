@@ -1,0 +1,8 @@
+summary: Multiplexing create loan for hdfc api calls
+id: helloworld
+tasks:
+    - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
+      description: create account in the bank
+      fn: com.gs.return
+      args: |
+        'hello world'

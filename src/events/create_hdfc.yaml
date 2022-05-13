@@ -12,7 +12,7 @@
               type: object
               properties:
                 Gender: 
-                  type: string
+                  type: array
               #additionalProperties: false
               #required: [id]
             examples: # <string, ExampleObject>
@@ -24,7 +24,7 @@
             encoding:
       params: # can come from path, query, headers
         - name: bank_id
-          in: path # same as open api spec: one of cookie, path, query, header
+          in: query # same as open api spec: one of cookie, path, query, header
           required: true
           allow_empty_value: false
           description:
