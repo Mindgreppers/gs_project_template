@@ -59,8 +59,27 @@ services:
     depends_on:
       - zookeeper
 
+  redis:
+    image: redis:7.0
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+            
 volumes:
   elasticsearch-data:
   postgresql-data:
   kafka-data:
   zookeeper-data:
+  mongodb-data:
