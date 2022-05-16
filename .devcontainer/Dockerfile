@@ -5,16 +5,13 @@ ARG VARIANT="latest"
 
 FROM adminmindgrep/gs_service:$VARIANT
 WORKDIR /workspace/development
-ARG USERNAME=gs_user
-ARG USER_UID=1001
+ARG USERNAME=node
+ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-# Create the user
-RUN useradd -o --uid $USER_UID -s /bin/bash --gid $USER_GID -m $USERNAME \
-    && apt-get update \
-    && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
-    && chown -R dev /workspace/development
+
+RUN groupmod --gid $USER_GID $USERNAME \
+    && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+    && chown -R $USER_UID:$USER_GID /home/$USERNAME
 
 
 

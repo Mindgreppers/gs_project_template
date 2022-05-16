@@ -1,7 +1,7 @@
 {
     "name": "GS Template",
     "forwardPorts": [3000],
-    "remoteUser": "dev",
+    "remoteUser": "node",
     "settings": {
       "terminal.integrated.profiles.linux": {
         "node bash": {
