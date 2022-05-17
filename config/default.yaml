@@ -1,2 +1,5 @@
 api_version: "1.0"
 log_level: "debug"
+growthsource:
+  base_url: http://127.0.0.1:8098/lending/gs/api
+  api_token: basic 2b6a50d0-2090-11ec-a119-a7656cbcab18
