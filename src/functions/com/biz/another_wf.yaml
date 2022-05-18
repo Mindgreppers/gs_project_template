@@ -5,7 +5,7 @@ id: another
 tasks:
     - id: another_step1 # the response of this will be accessible within the parent step key, under the step1 sub key
       description: call another workflow
-      fn: com.pinelabs.sub_wf
+      fn: com.biz.sub_wf
       args:
         datasource: growthsource
         customer_name: "ABC"

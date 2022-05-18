@@ -1,5 +1,5 @@
 '/another_workflow.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.pinelabs.another_wf
+  fn: com.biz.another_wf
   data: 
     examples: # <string, ExampleObject>
     schema:
