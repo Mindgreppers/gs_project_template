@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd gs_service && npm run test",
+    "test-cov": "cd gs_service && npm run test-cov",
     "dev": "PORT=3000 nodemon gs_service/dist/app.js",
     "clean": "cd gs_service && npm run clean",
     "build": "mkdir -p  gs_service/project && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build"
