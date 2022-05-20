@@ -9,7 +9,6 @@ tasks:
         datasource: growthsource
         params:
         data:
-            #partner_application_id: PSAM-2022
             partner_application_id: <% 'PSAM-' + randomString(5, '0123456789') %>
             mobile_number: "9823123318"
             personal_email_id: <% std.get(inputs.body, 'sambasiva', 'shane.raew3@growthsourceft.com') %>
@@ -19,20 +18,7 @@ tasks:
             pan_number: "AZOPB8813Y"
             customer_name: "shane belgal"
 
-        # data: |
-        #   <transform>
-        #     {
-        #       partner_application_id: 'PSAM-' + randomString(5, '0123456789'),
-        #       mobile_number: "9823123318",
-        #       personal_email_id: std.get(inputs.body, 'sambasiva', 'shane.raew3@growthsourceft.com'),
-        #       customer_consent: true,
-        #       gender: if randomInt(0, 1) == 1 then 'M' else 'F',
-        #       date_of_birth: "21-06-1991",
-        #       pan_number: "AZOPB8813Y",
-        #       customer_name: "shane belgal"
-        #     }
-        #   </transform>
-        #data: ${inputs.body}
+        #data: <%inputs.body%>
         config:
           url : /loki/v1/application/
           method: post

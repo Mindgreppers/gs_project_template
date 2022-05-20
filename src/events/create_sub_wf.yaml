@@ -1,5 +1,5 @@
 '/sub_wf.http.post': 
-  fn: com.pinelabs.sub_wf
+  fn: com.biz.sub_wf
   data: 
     examples: # <string, ExampleObject>
     schema:

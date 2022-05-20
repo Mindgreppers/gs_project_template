@@ -33,3 +33,7 @@ package-lock.json
 project
 
 dist
+
+gs_service/
+src/datasources/generated-prisma-clients
+

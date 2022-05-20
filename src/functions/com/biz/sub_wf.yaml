@@ -11,14 +11,14 @@ tasks:
         params:
         data:
             #partner_application_id: PSAM-2022
-            partner_application_id: ${'PSAM-' + randomString(5, '0123456789')}
+            partner_application_id: <%'PSAM-' + randomString(5, '0123456789')%>
             mobile_number: "9823123318"
-            personal_email_id: ${std.get(inputs, 'sambasiva', 'shane.raew3@growthsourceft.com')}
+            personal_email_id: <%std.get(inputs, 'sambasiva', 'shane.raew3@growthsourceft.com')%>
             customer_consent: true
             gender: "M"
             date_of_birth: "21-06-1991"
             pan_number: "AZOPB8813Y"
-            customer_name: ${std.get(inputs, 'customer_name')}
+            customer_name: <%inputs.body.customer_name%>
 
         config:
           url : /loki/v1/application/

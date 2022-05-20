@@ -1,8 +1,9 @@
 summary: Multiplexing create loan for hdfc api calls
+id: example_switch_functionality_id
 tasks:
-  - id: switch
+  - id: step1_switch
     fn: com.gs.switch
-    value: ${inputs.body.condition}
+    value: <%inputs.body.condition%>
     cases:
       FIRST:
         id: 1st
@@ -25,4 +26,4 @@ tasks:
     args: |
         { 
           code: 200,
-        } + outputs.switch      
+        } + outputs.step1_switch      

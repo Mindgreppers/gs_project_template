@@ -1,5 +1,5 @@
-'/another_workflow.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.biz.another_wf
+'/kyc.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
+  fn: com.pinelabs.kyc
   data: 
     examples: # <string, ExampleObject>
     schema:
@@ -25,7 +25,7 @@
       params: # can come from path, query, headers
         - name: bank_id
           in: query # same as open api spec: one of cookie, path, query, header
-          required: false
+          required: true
           allow_empty_value: false
           description:
           schema:
@@ -53,5 +53,26 @@
                   description:
                   value: 
                     application_id: PRM20478956N
+                  external_value:
+              encoding:
+    400:
+      examples: # <string, ExampleObject>
+      schema:
+        data: 
+          description:
+          required: # default value is false
+          content:
+            application/json: # For ex. application/json application/xml
+              schema: 
+                type: object
+                properties:
+                  lender_response_code: 
+                    type: string
+              examples: # <string, ExampleObject>
+                example1:
+                  summary:
+                  description:
+                  value: 
+                    lender_response_code: E001
                   external_value:
               encoding:
