@@ -21,6 +21,6 @@ tasks:
   - id: step2
     fn: com.gs.transform
     args: |
-        { 
+        <% { 
           code: 200,
-        } + outputs['1st']
+        } + outputs['1st'] %>

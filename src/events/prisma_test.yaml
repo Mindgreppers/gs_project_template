@@ -1,2 +1,2 @@
 /v1/prisma_test/:entity_type.http.post:
-  fn: com.biz.test_prisma
+  fn: com.biz.test_mongo

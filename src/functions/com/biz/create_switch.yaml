@@ -24,6 +24,6 @@ tasks:
   - id: step2
     fn: com.gs.transform
     args: |
-        { 
+        <% { 
           code: 200,
-        } + outputs.step1_switch      
+        } + outputs.step1_switch %>

@@ -10,7 +10,7 @@ tasks:
         datasource: httpbin
         params:
         data:
-            application_id: 'PSAM-56543'
+            application_id: <% 'PSAM-' + randomString(5, '0123456789') %>
             mobile_number: "9999888877"
             personal_email_id: <%std.get(inputs.body, 'alaeforwich', 'ala.eforwich@email.com')%>
             customer_consent: true
@@ -35,7 +35,7 @@ tasks:
     - id: step2
       fn: com.gs.transform
       args: |
-          if outputs.step1.data.json.code == 200 then {
+          <% if outputs.step1.data.json.code == 200 then {
               code: 200,
               success : true,
               data: outputs.step1.data.json,
@@ -44,5 +44,5 @@ tasks:
               code: 500,
               success : false,
               message: 'error in step1'
-          }
+          } %>
               

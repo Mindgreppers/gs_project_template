@@ -43,10 +43,10 @@
               schema: 
                 type: object
                 properties:
-                  application_id: 
+                  customer_name: 
                     type: string
-                additionalProperties: false
-                required: [application_id]
+                additionalProperties: true
+                required: [customer_name]
               examples: # <string, ExampleObject>
                 example1:
                   summary:
