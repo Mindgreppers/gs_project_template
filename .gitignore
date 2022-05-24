@@ -35,5 +35,5 @@ project
 dist
 
 gs_service/
-src/datasources/generated-prisma-clients
+src/datasources/generated-clients
 
