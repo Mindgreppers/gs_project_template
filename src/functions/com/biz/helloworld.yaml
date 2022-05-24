@@ -6,5 +6,5 @@ tasks:
     - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
       description: Return hello world
       fn: com.gs.return
-      args: <%'Hello World!'%>
+      args: 'Hello World!'
       
