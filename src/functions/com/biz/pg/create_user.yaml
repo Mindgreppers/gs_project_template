@@ -1,0 +1,34 @@
+summary: postgres demo
+tasks:
+  - id: create_user # the response of this will be accessible within the parent step key, under the step1 sub key
+    description: postgres demo
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data: <% inputs.body %>
+      config:
+        method: <% inputs.params.entity_type %>.create
+
+    retry: #Kestra spec compliant retry mechanism. By default turned off.
+      maxAttempt: 5
+      type: constant
+      interval: PT15M
+  - id: find_user # the response of this will be accessible within the parent step key, under the step1 sub key
+    description: find users
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        include:
+          posts:
+            where:
+              published: false
+          
+          profile: true
+      config:
+        method: <% inputs.params.entity_type %>.findMany
+
+    retry: #Kestra spec compliant retry mechanism. By default turned off.
+      maxAttempt: 5
+      type: constant
+      interval: PT15M

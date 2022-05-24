@@ -1,0 +1,2 @@
+/pg/create/:entity_type.http.post:
+  fn: com.biz.pg.create_user
