@@ -14,7 +14,7 @@
                 Gender: 
                   type: string
               #additionalProperties: false
-              #required: [id]
+              required: [Gender]
             examples: # <string, ExampleObject>
               '{example_name}':
                 summary:
@@ -45,7 +45,7 @@
                 properties:
                   application_id: 
                     type: string
-                additionalProperties: false
+                #additionalProperties: false
                 required: [application_id]
               examples: # <string, ExampleObject>
                 example1:

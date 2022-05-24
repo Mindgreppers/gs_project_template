@@ -11,10 +11,10 @@
             schema: 
               type: object
               properties:
-                Gender: 
+                customer_name: 
                   type: string
               #additionalProperties: false
-              #required: [id]
+              required: [customer_name]
             examples: # <string, ExampleObject>
               '{example_name}':
                 summary:

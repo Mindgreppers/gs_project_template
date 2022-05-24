@@ -14,7 +14,7 @@
                 Gender: 
                   type: string
               #additionalProperties: false
-              #required: [id]
+              required: [condition]
             examples: # <string, ExampleObject>
               '{example_name}':
                 summary:
