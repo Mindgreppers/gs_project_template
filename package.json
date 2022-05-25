@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd gs_service && npm run test",
     "test-cov": "cd gs_service && npm run test-cov",
-    "dev": "PORT=3000 nodemon gs_service/dist/app.js",
+    "dev": "PORT=3000 nodemon gs_service/dist/app.js | pino-pretty",
     "clean": "cd gs_service && npm run clean",
     "build": "mkdir -p  gs_service/project && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build"
   },
@@ -15,9 +15,11 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "nodemon": "^2.0.15",
-    "prisma": "^3.14.0"
+    "prisma": "^3.14.0",
+    "pino-pretty": "^7.6.1"
   },
   "dependencies": {
     "@prisma/client": "^3.14.0"
+    
   }
 }

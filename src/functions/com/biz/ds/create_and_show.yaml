@@ -1,11 +1,11 @@
-summary: postgres demo
+summary: datastore demo
 tasks:
   - id: create_user # the response of this will be accessible within the parent step key, under the step1 sub key
-    description: postgres demo
+    description: datastore demo
     fn: com.gs.datastore
     args:
-      datasource: postgres
-      data: <% inputs.body %>
+      datasource: <%inputs.body.db%>
+      data: <% inputs.body.data %>
       config:
         method: <% inputs.params.entity_type %>.create
 
@@ -17,13 +17,12 @@ tasks:
     description: find users
     fn: com.gs.datastore
     args:
-      datasource: postgres
+      datasource: <%inputs.body.db%>
       data:
         include:
           posts:
             where:
               published: false
-          
           profile: true
       config:
         method: <% inputs.params.entity_type %>.findMany

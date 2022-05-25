@@ -1,0 +1,46 @@
+/create/:entity_type.http.post:
+  fn: com.biz.ds.create_and_show
+  data:
+    schema:
+      params: # can come from path, query, headers
+        - name: entity_type
+          in: path # same as open api spec: one of cookie, path, query, header
+          required: true
+          allow_empty_value: false
+          description: the type of entity to create and find later
+          schema:
+            type: string
+          examples:
+            sample_entity_type: #name of the example
+              user
+      body:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data: 
+                  type: object
+                  properties:
+                    data: 
+                      type: object
+                  required: [data]
+                db:
+                  type: string
+              required: [data,db]
+            examples:
+              create_user:
+                db: mongo
+                data:
+                  data:
+                    name: Rajesh
+                    email: rfd@gmail.com
+                    posts:
+                      create:
+                        title: Swecond post!
+                        slug: dfourth_post
+                        description: some description
+                        body: Hello World!
+                    profile:
+                      create:
+                        bio: google.com

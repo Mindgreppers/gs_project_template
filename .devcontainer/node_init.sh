@@ -8,6 +8,12 @@ then
      then
         unlink /workspace/development/app/gs_service
         ln -s /workspace/development/gs_service /workspace/development/app
-     fi    
-fi
+     fi
+elif [ -d "/workspace/development/app/gs_service" ]  
+then
+    rm -rf /workspace/development/app/gs_service
+    ln -s /workspace/development/gs_service /workspace/development/app
 
+else 
+    ln -s /workspace/development/gs_service /workspace/development/app
+fi
