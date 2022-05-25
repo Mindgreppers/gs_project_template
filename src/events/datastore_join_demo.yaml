@@ -1,0 +1,33 @@
+/ds/:entity_type.http.get:
+  fn: com.biz.ds.cross_db_join
+  data:
+    schema:
+      params: # can come from path, query, headers
+        - name: entity_type
+          in: path # same as open api spec: one of cookie, path, query, header
+          required: true
+          allow_empty_value: false
+          description: the type of entity to create and find later
+          schema:
+            type: string
+          examples:
+            sample_entity_type: #name of the example
+              user
+      body:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    where: 
+                      type: object
+                  required: [where]
+              required: [data]
+            examples:
+              search_user:
+                data:
+                  where:
+                    email: rfd@gmail.com
