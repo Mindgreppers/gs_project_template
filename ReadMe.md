@@ -37,6 +37,7 @@ chmod 0600 .devcontainer/mongo-keyfile
 - Get inside the mongodb container
 ```sh
 docker exec -it mongodb1 bash
+/scripts/mongodb_rs_init.sh
 ```
 
 - Now run the script to bootstrap the cluster
@@ -72,5 +73,35 @@ npx prisma db push --schema=src/datasources/mongo.prisma
 export POSTGRES_URL=postgresql://postgres:postgres@postgresdb:5432/emp
 npx prisma db push --schema=src/datasources/postgres.prisma
 ```
+- Go to the postman put data in body section
+```sh
+{
+    "db": "postgres",
+    "data": {
+        "data": {
+            "name": "Rajesh",
+            "email": "rrrfd@gmail.com",
+            "posts": {
+                "create": {
+                    "title": "Swecond post!",
+                    "slug": "dddfourddth_post",
+                    "description": "some description",
+                    "body": "Hello World!"
+                }
+            },
+            "profile": {
+                "create": {
+                    "bio": "google.com"
+                }
+            }
+        }
+    }
+}
+```
+- Hit endpoint
+```sh
+http://localhost:3000/pg/create/user
+```
+
 
 
