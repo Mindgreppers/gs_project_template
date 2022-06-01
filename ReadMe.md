@@ -69,7 +69,7 @@ npx prisma db push --schema=src/datasources/mongo.prisma
 - For postgres
 
 ```sh
-export POSTGRES_URL=postgresql://postgres:postgres@postgresdb:5432
+export POSTGRES_URL=postgresql://postgres:postgres@postgresdb:5432/emp
 npx prisma db push --schema=src/datasources/postgres.prisma
 ```
 
