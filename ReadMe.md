@@ -1,88 +1,76 @@
 # GS_PROJECT_TEMPLATE
 
-## Config
-Define Datasources/Events/Functions in gs_project_template/src directory
-
-## Setup
-### Setup gs-service configure with mongodb and prisma
-Clone the gs_project_template
+# Setup gs-template by dev-container
+ - Clone the gs_project_template.
 ```sh
 git clone https://github.com/Mindgreppers/gs_project_template.git
 cd gs_project_template
 ```
-Clone the gs_service with in gs_project_template
+ - You have not in master branch, then first go to master branch 
+ ```sh
+ git checkout master
+ ```
+ - Then choose run in remote container.
+ 
+
+# You have to do a one time effort to setup the database users , replicate set etc.
+
+*****************************
+# ONE TIME EFFORT
+******************************
+ - TO pull the latest gs_service image
 ```sh
-https://github.com/Mindgreppers/gs_service.git
+docker pull docker.io/adminmindgrep/gs_service:latest
 ```
-Choose the branch datastores
+
+- Now before running the dev cotnainer, need to change permission of mongodb key file
 ```sh
-git checkout datastores
-cd ..
+chmod 0600 .devcontainer/mongo-keyfile
 ```
-### MongoDB install by docker in locally
+- Now go to the project in VSCode and start the dev container.
+   - Do these two steps
+1. Open in container
+2. Rebuild container
+
+
+- Now setup mongodb user
+- Get inside the mongodb container
 ```sh
-docker pull mongo:4.0.4
-docker run -d --name test-mongo mongo:4.0.4
+docker exec -it mongodb1 bash
 ```
-Show all listed of running container and select the container, we are used
-note: In my case , I am using mongodb container
-```sh
-docker exec -it fd91f992a731 bash
+
+- Now run the script to bootstrap the cluster
+
+- Login to mongodb shell 
+ ```sh
+mongosh mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3/admin
 ```
-when you come in the container then used the command below for authentication and authorizaion
+## Create the user
+
 ```sh
-## mongo -u root -p root
+db.createUser(
+{
+user: "dev",
+pwd: "dev",
+roles: [ { role: "readWrite", db: "test" } ]
+})
 ```
-check list all the available databases on MongoDB server
+## Prisma 
+ - Prisma is an open source next-generation ORM(object Relation Mapping)
+
+## Now setup the schema in the databases (First time, or whenever doing migration)
+- For Mongodb
 ```sh
-show dbs
+export MONGO_TEST_URL=mongodb://dev:dev@mongodb1,mongodb2,mongodb3:27017/test
+npx prisma db push --schema=src/datasources/mongo.prisma
 ```
-You have create 'test' database in mongodb, type
+
+
+- For postgres
+
 ```sh
-use test;
+export POSTGRES_URL=postgresql://postgres:postgres@postgresdb:5432
+npx prisma db push --schema=src/datasources/postgres.prisma
 ```
-Create your first document in MongoDB
-```sh
-db.user.insert({name: "kushal", age: 205})
-```
-MongoDB run which IP in the docker then used the below command:
-```sh
-docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' test-mongo
-```
-In my case, output is:
-```sh
-172.17.0.2
-```
-Export the mongodb
-```sh
-export MONGO_TEST_URL=mongodb://172.17.0.2:27017/test
-``
-Prisma
-```sh
-npx prisma generate --schema=./src/datasources/test.prisma
-```
-```sh
-npm run clean
-npm run build
-npm run dev
-```
-###  Going to the Postman and hit end point
-```sh
-http://localhost:3000/v1/prisma_test/user
-```
-Response is 200k
-```sh
-    "apiVersion": "1.0",
-    "data": {
-        "items": [
-            [
-                {
-                    "id": "62877a224aadfbb386b8cc0d",
-                    "age": 205,
-                    "name": "Ada Lovelace"
-                }
-            ]
-        ]
-    }
-}
-```
+
+
