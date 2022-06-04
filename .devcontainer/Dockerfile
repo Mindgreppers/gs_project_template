@@ -14,7 +14,7 @@ RUN groupmod --gid $USER_GID $USERNAME \
     && chown -R $USER_UID:$USER_GID /home/$USERNAME \
     && chown -R $USER_UID /workspace
 
-
+USER node
 
 # RUN cd /workspaces/gs_project_template && rsync --delete -rv src/ gs_service/project && npm install && \
 #     cd gs_service && cp -r project/* src/* build/  && \
