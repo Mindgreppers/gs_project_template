@@ -3,7 +3,7 @@
 
 if [ -L "/workspace/development/app/gs_service" ]
 then
-     sudo link=$(readlink /workspace/development/app/gs_service)
+     link=$(readlink /workspace/development/app/gs_service)
      if ! [ $link ==  "/workspace/development/gs_service"  ]
      then
        sudo  unlink /workspace/development/app/gs_service
