@@ -10,7 +10,7 @@ services:
       - SHELL=/bin/bash
     volumes:
       - ..:/workspace/development/app:cached
-      - ./node_init.sh:/scripts/node_init.sh
+      - ./scripts:/scripts
     working_dir: /workspace/development/app
     ports:
       - 3000:3000
@@ -82,37 +82,36 @@ services:
     image: mongo:5.0
     volumes:
       - mongodb1-data:/data/db
-      - ./mongodb_rs_init.sh:/scripts/mongodb_rs_init.sh
-      - ./mongo-keyfile:/data/key/mongo-keyfile
+      - ./scripts:/scripts
     ports:
       - 27017:27017
     links:
       - mongodb2
       - mongodb3
     restart: always
-    entrypoint: [ "/usr/bin/mongod","--keyFile", "/data/key/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
+    entrypoint: [ "/usr/bin/mongod","--keyFile", "/scripts/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
     
   mongodb2:
     container_name: mongodb2
     image: mongo:5.0
     volumes:
       - mongodb2-data:/data/db
-      - ./mongo-keyfile:/data/key/mongo-keyfile
+      - ./scripts:/scripts
     ports:
       - 27018:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod","--keyFile", "/data/key/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
+    entrypoint: [ "/usr/bin/mongod","--keyFile", "/scripts/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
 
   mongodb3:
     container_name: mongodb3
     image: mongo:5.0
     volumes:
       - mongodb3-data:/data/db
-      - ./mongo-keyfile:/data/key/mongo-keyfile
+      - ./scripts:/scripts
     ports:
       - 27019:27017
     restart: always
-    entrypoint: [ "/usr/bin/mongod","--keyFile", "/data/key/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
+    entrypoint: [ "/usr/bin/mongod","--keyFile", "/scripts/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
             
 volumes:
   elasticsearch-data:
