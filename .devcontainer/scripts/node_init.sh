@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /workspace/development/app
+npm install @mindgrep/godspeed
 
 if [ -L "/workspace/development/app/gs_service" ]
 then
