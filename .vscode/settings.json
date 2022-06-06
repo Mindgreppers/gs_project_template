@@ -6,5 +6,11 @@
                    "cmd": "npm run build"
                }
         ]
+    },
+    "files.exclude": {
+        "**/.*": true,
+        "**/gs_service": true,
+        "**/node_modules": true,
+        "**/package*": true
     }
 }
