@@ -1,5 +1,5 @@
 
-FROM adminmindgrep/gs_service:latest AS appbuild
+FROM adminmindgrep/gs_service:1.0.0 AS appbuild
 
 WORKDIR /workspace/development/app
 
