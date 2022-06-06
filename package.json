@@ -8,7 +8,8 @@
     "test-cov": "cd gs_service && npm run test-cov",
     "dev": "PORT=3000 node -r ./gs_service/dist/core/logger.js -r ./gs_service/dist/telemetry/tracing.js gs_service/dist/app.js | pino-pretty",
     "clean": "cd gs_service && npm run clean",
-    "build": "mkdir -p  gs_service/project && && for f in src/datasources/*.prisma; do npx prisma generate --schema=$f; done && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build"
+    "dbpush": "for f in src/datasources/*.prisma; do npx prisma db push --schema=$f; done &&",
+    "build": "mkdir -p  gs_service/project && for f in src/datasources/*.prisma; do npx prisma generate --schema=$f; done && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build"
   },
   "author": "",
   "license": "ISC",
