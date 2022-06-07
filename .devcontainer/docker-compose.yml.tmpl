@@ -13,7 +13,7 @@ services:
     ports:
       - 3000:3000
       
-{{#if elasticsearch}}
+<% if elasticsearch { %>
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
     environment:
@@ -29,9 +29,9 @@ services:
       - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-{{/if}}
+<% } %>
 
-{{#if postgresql}}
+<% if postgresql { %>
   postgresdb:
     image: postgres:14.1-alpine
     restart: always
@@ -43,9 +43,9 @@ services:
     volumes: 
       - postgresql-data:/var/lib/postgresql/data
 
-{{/if}}
+<% } %>
 
-{{#if kafka}}
+<% if kafka { %>
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
     ports:
@@ -68,7 +68,9 @@ services:
     depends_on:
       - zookeeper
 
-{{/if}}
+<% } %>
+
+<% if redis { %>
 
   redis:
     image: redis:7.0
@@ -77,8 +79,9 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
       - '6379:6379'
+<% } %>
 
-{{#if mongodb}}
+<% if mongodb { %>
   mongodb1:
     image: mongo:5.0
     volumes:
@@ -112,24 +115,24 @@ services:
     restart: always
     command: bash -c "/scripts/mongodb_init.sh"
 
-{{/if}}
+<% } %>
 
 volumes:
-{{#if elasticsearch}}
+<% if elasticsearch { %>
   elasticsearch-data:
-{{/if}}
+<% } %>
 
-{{#if postgresql}}
+<% if postgresql { %>
   postgresql-data:
-{{/if}}
+<% } %>
 
-{{#if kafka}}
+<% if kafka { %>
   kafka-data:
   zookeeper-data:
-{{/if}}
+<% } %>
 
-{{#if mongodb}}
+<% if mangodb { %>
   mongodb1-data:
   mongodb2-data:
   mongodb3-data:    
-{{/if}}
+<% } %>

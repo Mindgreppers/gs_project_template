@@ -47,18 +47,18 @@ mongosh <<EOF
 EOF
 
 mongosh  mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3/admin <<EOF
-    use {{{mongoDbName}}};
+    use <%=mongoDbName%>;
     db.collection.insertOne({});
 EOF
 
 mongosh  mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3/admin <<EOF
-   use {{{mongoDbName}}};
-   {{{mongoDbName}}} = db.getSiblingDB("{{{mongoDbName}}}");
-   {{{mongoDbName}}}.createUser(
+   use <%=mongoDbName%>;
+   <%=mongoDbName%> = db.getSiblingDB("<%=mongoDbName%>");
+   <%=mongoDbName%>.createUser(
      {
 	user: "admin",
         pwd: "mindgrep",
-        roles: [ { role: "readWrite", db: "{{{mongoDbName}}}" }]
+        roles: [ { role: "readWrite", db: "<%=mongoDbName%>" }]
      });
      exit
 EOF
