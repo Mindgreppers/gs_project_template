@@ -1,5 +1,5 @@
 '/run_parallel_tasks.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.biz.create_parallel
+  fn: com.biz.run_tasks_in_parallel
   summary: Running tasks in parallel
   description: |
     Run any three tasks in parallel. Each task can invoke a function or another workflow. 

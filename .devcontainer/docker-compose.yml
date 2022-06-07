@@ -3,10 +3,7 @@ version: "3.7"
 services:
   node:
     command: bash -c "/scripts/node_init.sh && sleep infinity"
-    build:
-      context: ./
-      args:
-        - VARIANT=1.0.1
+    image: adminmindgrep/gs_service:1.0.4
     environment:
       - SHELL=/bin/bash
     volumes:
