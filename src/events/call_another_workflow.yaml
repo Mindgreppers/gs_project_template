@@ -1,5 +1,7 @@
 '/another_workflow.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.biz.another_wf
+  fn: com.biz.call_another_wf
+  summary: Call another (sub) workflow from main workflow
+  description: Here we are calling other yaml workflows from within the main workflow. We are also using JSON schema for request body and params validation
   data: 
     examples: # <string, ExampleObject>
     schema:

@@ -1,5 +1,7 @@
 /create/:entity_type.http.post:
-  fn: com.biz.ds.create_and_show
+  fn: com.biz.ds.create_user_then_show_all
+  summary: Create a user across Mongo or Postgres
+  description: Create a user with posts and profile, as per the data model. Demonstrate same API for both Mongo and Postgres.
   data:
     schema:
       params: # can come from path, query, headers
@@ -7,7 +9,7 @@
           in: path # same as open api spec: one of cookie, path, query, header
           required: true
           allow_empty_value: false
-          description: the type of entity to create and find later
+          description: The type of entity to create and find later
           schema:
             type: string
           examples:

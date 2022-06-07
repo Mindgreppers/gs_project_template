@@ -1,10 +1,9 @@
 # config, inputs, ouputs, vars
 # Environment variables will be loaded in config files via some convention
-summary: Multiplexing create loan for hdfc api calls
-id: create_hdfc_01
+summary: Call an API and transform the 
 tasks:
     - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
-      description: create account in the bank
+      description: Hit http bin with some dummy data. It will send back same as response
       fn: com.gs.http
       args:
         datasource: httpbin
@@ -28,9 +27,6 @@ tasks:
         maxAttempt: 5
         type: constant
         interval: PT15M
-
-      on_error:
-        continue: true
 
     - id: step2
       fn: com.gs.transform

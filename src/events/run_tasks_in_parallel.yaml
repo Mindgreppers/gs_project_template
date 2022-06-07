@@ -1,0 +1,7 @@
+'/run_parallel_tasks.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
+  fn: com.biz.create_parallel
+  summary: Running tasks in parallel
+  description: |
+    Run any three tasks in parallel. Each task can invoke a function or another workflow. 
+    Here we are simply returning a string in each task. 
+    In response, we are returning a JSON with output from 1st task

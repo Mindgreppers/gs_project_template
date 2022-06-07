@@ -1,5 +1,4 @@
-summary: datastore demo
-    
+summary: Cross DB join demo
 tasks:
   - &reusable_code 
     id: get_mongo # the response of this will be accessible within the parent step key, under the step1 sub key

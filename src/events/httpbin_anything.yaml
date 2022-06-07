@@ -1,5 +1,5 @@
-'/do_kyc/idfc.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.biz.create_hdfc_account
+'/anything.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
+  fn: com.biz.httpbin_anything
   data: 
     examples: # <string, ExampleObject>
     schema:

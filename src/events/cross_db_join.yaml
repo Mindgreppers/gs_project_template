@@ -1,5 +1,7 @@
 /ds/:entity_type.http.get:
   fn: com.biz.ds.cross_db_join
+  summary: Join from Mongo and Postgres
+  description: Demonstrates the ability to join data from multiple datastores. 
   data:
     schema:
       params: # can come from path, query, headers
