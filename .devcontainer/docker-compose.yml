@@ -2,10 +2,11 @@ version: "3.7"
 
 services:
   node:
-    container_name: node
     command: bash -c "/scripts/node_init.sh && sleep infinity"
     build:
       context: ./
+      args:
+        - VARIANT=1.0.0
     environment:
       - SHELL=/bin/bash
     volumes:
@@ -17,7 +18,6 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-    container_name: elasticsearch01
     environment:
       - node.name=es01
       - discovery.type=single-node
@@ -33,7 +33,6 @@ services:
       - 9200:9200
 
   postgresdb:
-    container_name: postgresdb
     image: postgres:14.1-alpine
     restart: always
     environment:
@@ -45,7 +44,6 @@ services:
       - postgresql-data:/var/lib/postgresql/data
 
   zookeeper:
-    container_name: zookeeper
     image: docker.io/bitnami/zookeeper:3.8
     ports:
       - "2181:2181"
@@ -53,7 +51,6 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
       
   kafka:
-    container_name: kafka
     image: docker.io/bitnami/kafka:3.1
     ports:
       - "9092:9092"
@@ -69,7 +66,6 @@ services:
       - zookeeper
 
   redis:
-    container_name: redis
     image: redis:7.0
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
@@ -78,7 +74,6 @@ services:
       - '6379:6379'
 
   mongodb1:
-    container_name: mongodb1
     image: mongo:5.0
     volumes:
       - mongodb1-data:/data/db
@@ -92,7 +87,6 @@ services:
     entrypoint: [ "/usr/bin/mongod","--keyFile", "/scripts/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
     
   mongodb2:
-    container_name: mongodb2
     image: mongo:5.0
     volumes:
       - mongodb2-data:/data/db
@@ -103,7 +97,6 @@ services:
     entrypoint: [ "/usr/bin/mongod","--keyFile", "/scripts/mongo-keyfile",  "--bind_ip_all", "--replSet", "gs_service" ]
 
   mongodb3:
-    container_name: mongodb3
     image: mongo:5.0
     volumes:
       - mongodb3-data:/data/db
