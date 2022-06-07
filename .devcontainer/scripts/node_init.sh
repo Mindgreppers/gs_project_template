@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #cd /workspace/development/app
-npm install -g @mindgrep/godspeed
+sudo npm install -g @mindgrep/godspeed
 chown -R node:node /workspace/development/gs_service
 
 if [ -L "/workspace/development/app/gs_service" ]
