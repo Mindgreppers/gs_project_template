@@ -6,7 +6,7 @@
     - name: entity_type
       in: path # same as open api spec: one of cookie, path, query, header
       required: true
-      allow_empty_value: false
+      
       description: The type of entity to create and find later
       schema:
         type: string

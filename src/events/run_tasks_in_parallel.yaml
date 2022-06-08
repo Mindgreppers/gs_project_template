@@ -5,3 +5,12 @@
     Run any three tasks in parallel. Each task can invoke a function or another workflow. 
     Here we are simply returning a string in each task. 
     In response, we are returning a JSON with output from 1st task
+  responses:
+    200:
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: parallel task1
+

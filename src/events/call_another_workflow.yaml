@@ -20,12 +20,11 @@
             description: Name of the customer
             value:
               customer_name: Ayush
-        encoding:
   params: # can come from path, query, headers
         - name: bank_id
           in: query # same as open api spec: one of cookie, path, query, header
           required: true
-          allow_empty_value: false
+          
           description: ID of the bank
           schema:
             type: string

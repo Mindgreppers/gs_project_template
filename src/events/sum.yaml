@@ -2,3 +2,5 @@
   fn: com.biz.sum_workflow
   summary: A workflow involving developer written JS function
   description: This workflow invokes a developer defined function at path com.biz.sum
+  responses:
+    
