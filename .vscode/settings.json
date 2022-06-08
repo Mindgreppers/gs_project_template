@@ -2,14 +2,19 @@
     "emeraldwalk.runonsave": {
         "commands": [
                {
-                   "match": ".*",
-                   "cmd": "npm run build"
-               }
+                   "match": "\\.(yaml|yml|js|json)$",
+                   "cmd": "npm run copy"
+               },
+               {
+                "match": "\\.(ts)$",
+                "cmd": "npm run build"
+            }
         ]
     },
     "files.exclude": {
         "**/gs_service": true,
         "**/node_modules": true,
-        "**/package*": true
+        "**/package*": true,
+        "**/.*": true
     }
 }
