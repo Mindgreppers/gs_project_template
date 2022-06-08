@@ -45,3 +45,11 @@
                   profile:
                     create:
                       bio: google.com
+  responses: 
+    200:
+      content:
+        application/json: # For ex. application/json application/xml
+          schema: 
+            type: array
+            items:
+              type: object

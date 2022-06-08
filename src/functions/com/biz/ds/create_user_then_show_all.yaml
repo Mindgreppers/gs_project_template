@@ -13,6 +13,8 @@ tasks:
       maxAttempt: 5
       type: constant
       interval: PT15M
+    on_error:
+      continue: false
   - id: find_user # the response of this will be accessible within the parent step key, under the step1 sub key
     description: find users
     fn: com.gs.datastore

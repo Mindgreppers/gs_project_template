@@ -1,7 +1,7 @@
-/ds/:entity_type.http.get:
+/ds/:entity_type.http.post:
   fn: com.biz.ds.cross_db_join
   summary: Join from Mongo and Postgres
-  description: Demonstrates the ability to join data from multiple datastores. 
+  description: Demonstrates the ability to join data from multiple datastores via the Prisma API. 
   data:
     schema:
       params: # can come from path, query, headers
@@ -9,12 +9,12 @@
           in: path # same as open api spec: one of cookie, path, query, header
           required: true
           allow_empty_value: false
-          description: the type of entity to create and find later
+          description: The type of entity to create and find later
           schema:
             type: string
           examples:
             sample_entity_type: #name of the example
-              user
+              value: user
       body:
         content:
           application/json:
@@ -26,10 +26,24 @@
                   properties:
                     where: 
                       type: object
+                      description: The where clause in Prisma format
+                      # properties:
+                      #   email:
+                      #     type: string
                   required: [where]
+            example:
+              data:
+                where:
+                  email: rfd@gmail.com
               required: [data]
-            examples:
-              search_user:
-                data:
-                  where:
-                    email: rfd@gmail.com
+  responses:
+    200:
+      content:
+        application/json: # For ex. application/json application/xml
+          schema:
+            type: object
+            properties:
+              mongo:
+                type: object
+              postgres:
+                type: object
