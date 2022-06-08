@@ -1,3 +1,3 @@
 type: api
-schema: https://raw.githubusercontent.com/Kong/swagger-ui-kong-theme/main/demo/public/specs/httpbin.yaml
+schema:
 base_url: <% config.httpbin.base_url %>
