@@ -1,13 +1,17 @@
 {
     "emeraldwalk.runonsave": {
         "commands": [
-               {
-                   "match": "\\.(yaml|yml|js|json)$",
-                   "cmd": "npm run copy"
-               },
-               {
+            {
+                "match": "\\.(yaml|yml|js|json)$",
+                "cmd": "npm run copy"
+            },
+            {
                 "match": "\\.(ts)$",
                 "cmd": "npm run build"
+            },
+            {
+                "match": "\\.(prisma)$",
+                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file}"
             }
         ]
     },
