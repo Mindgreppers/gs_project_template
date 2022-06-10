@@ -14,14 +14,12 @@ services:
     working_dir: /workspace/development/app
     ports:
       - 3000:3000
-{{#if mongodb || postgresql }}
     depends_on:
 {{#if mongodb }}
       - mongodb1
 {{/if}}
 {{#if postgresql }}
       - postgres
-{{/if}}
 {{/if}}
 
 
