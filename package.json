@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build2": "mkdir -p  gs_service/project  && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build",
-    "test": "cd gs_service && npm run test",
-    "test-cov": "cd gs_service && npm run test-cov",
-    "dev": "PORT=3000 node -r ./gs_service/dist/core/logger.js -r ./gs_service/dist/telemetry/tracing.js gs_service/dist/app.js | pino-pretty",
-    "clean": "cd gs_service && npm run clean",
-    "copy": "rsync --delete -rv src/* config gs_service/dist && touch gs_service/dist/app.js",
-    "build": "mkdir -p gs_service/project && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build"
+    "test": "cd ../gs_service && npm run test",
+    "test-cov": "cd ../gs_service && npm run test-cov",
+    "dev": "PORT=3000 nodemon -r ../gs_service/dist/core/logger.js -r ../gs_service/dist/telemetry/tracing.js ../gs_service/dist/app.js | pino-pretty",
+    "clean": "cd ../gs_service && npm run clean",
+    "copy": "rsync -rv src/* config ../gs_service/dist && touch ../gs_service/dist/app.js",
+    "build": "mkdir -p ../gs_service/project && rsync --delete -rv src config ../gs_service/project/ && npm i && cd ../gs_service && npm run build"
   },
   "author": "",
   "license": "ISC",

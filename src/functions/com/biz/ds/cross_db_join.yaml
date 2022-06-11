@@ -1,28 +1,21 @@
 summary: Cross DB join demo
 tasks:
-  - &reusable_code 
-    id: get_mongo # the response of this will be accessible within the parent step key, under the step1 sub key
+  - id: get_mongo
     description: mongo fetch
     fn: com.gs.datastore
-    args: &common_args
+    args:
       datasource: mongo
       data:  <% inputs.body.data %>
       config:
         method: <% inputs.params.entity_type %>.findUnique
-  - id: get_postgres # the response of this will be accessible within the parent step key, under the step1 sub key
+  - id: get_postgres
     description: postgres fetch
     fn: com.gs.datastore
-    args: &common_args
+    args:
       datasource: postgres
       data: <% inputs.body.data %>
       config:
         method: <% inputs.params.entity_type %>.findUnique
-  # - <<: *reusable_code
-  #   id: get_postgres # the response of this will be accessible within the parent step key, under the step1 sub key
-  #   description: postgres fetch
-  #   args: 
-  #     <<: *common_args
-  #     datasource: postgres
   - id: join_response
     fn: com.gs.return
     args: |

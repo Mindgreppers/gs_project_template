@@ -2,8 +2,9 @@ version: "3.7"
 
 services:
   node:
-    command: bash -c "/scripts/node_init.sh && sleep infinity"
-    image: adminmindgrep/gs_service:1.0.8
+    command: bash -c "sleep infinity"
+    build:
+      context: .
     environment:
       - SHELL=/bin/bash
       - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/{{mongoDbName}}
@@ -14,16 +15,23 @@ services:
     working_dir: /workspace/development/app
     ports:
       - 3000:3000
+<% if (mongodb || postgresql || kafka || mongodb || redis) {%>
     depends_on:
-{{#if mongodb }}
+<% if (mongodb) { %>
       - mongodb1
-{{/if}}
-{{#if postgresql }}
+<% } %>
+<% if (postgresql) { %>
       - postgres
-{{/if}}
+<% } %>
+<% if (elasticsearch) { %>
+      - elasticsearch
+<% } %>
+<% if (redis) { %>
+      - redis
+<% } %>
+<% } %>
 
-
-{{#if elasticsearch }}
+<% if (elasticsearch) { %>
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
     environment:
@@ -39,9 +47,8 @@ services:
       - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-{{/if}}
-
-{{#if postgresql }}
+<% } %>
+<% if (postgresql) { %>
   postgres:
     image: postgres:14.1-alpine
     restart: always
@@ -53,9 +60,8 @@ services:
     volumes: 
       - postgresql-data:/var/lib/postgresql/data
 
-{{/if}}
-
-{{#if kafka }}
+<% } %>
+<% if (kafka) { %>
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
     ports:
@@ -78,9 +84,8 @@ services:
     depends_on:
       - zookeeper
 
-{{/if}}
-
-{{#if redis }}
+<% } %>
+<% if (redis) { %>
 
   redis:
     image: redis:7.0
@@ -89,9 +94,8 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
       - '6379:6379'
-{{/if}}
-
-{{#if mongodb }}
+<% } %>
+<% if (mongodb) { %>
   mongodb1:
     image: mongo:5.0
     volumes:
@@ -104,7 +108,6 @@ services:
       - mongodb3
     restart: always
     command: 'bash -c "/scripts/mongodb_init.sh"'
-
     
   mongodb2:
     image: mongo:5.0
@@ -126,24 +129,24 @@ services:
     restart: always
     command: 'bash -c "/scripts/mongodb_init.sh"'
 
-{{/if}}
+<% } %>
 
+<% if (elasticsearch || postgresql || kafka || mongodb) { %>
 volumes:
-{{#if elasticsearch }}
+<% if (elasticsearch) { %>
   elasticsearch-data:
-{{/if}}
-
-{{#if postgresql }}
+<% } %>
+<% if (postgresql) { %>
   postgresql-data:
-{{/if}}
-
-{{#if kafka }}
+<% } %>
+<% if (kafka) { %>
   kafka-data:
   zookeeper-data:
-{{/if}}
-
-{{#if mongodb }}
+<% } %>
+<% if (mongodb) { %>
   mongodb1-data:
   mongodb2-data:
   mongodb3-data:    
-{{/if}}
+<% } %>
+<% } %>
+
