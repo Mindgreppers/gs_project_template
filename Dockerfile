@@ -1,4 +1,4 @@
-FROM adminmindgrep/gs_service:1.0.10 AS appbuild
+FROM adminmindgrep/gs_service:1.0.11 AS appbuild
 COPY --chown=node:node . .
 RUN npm run build
 
