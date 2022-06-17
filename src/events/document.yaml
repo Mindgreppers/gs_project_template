@@ -1,0 +1,3 @@
+/document.http.post:
+  fn: com.biz.documents.upload_file
+  id: '/sendDocuments'

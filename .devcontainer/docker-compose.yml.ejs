@@ -9,6 +9,7 @@ services:
       - SHELL=/bin/bash
       - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/<%=mongoDbName%>
       - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/<%=postgresDbName%>
+      - PORT=<%=svcPort%>
     volumes:
       - ..:/workspace/development/app:cached
       - ./scripts:/scripts
