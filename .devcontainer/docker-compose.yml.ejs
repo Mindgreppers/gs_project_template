@@ -15,7 +15,7 @@ services:
       - ./scripts:/scripts
     working_dir: /workspace/development/app
     ports:
-      - <%=svcPort%>:3000
+      - <%=svcPort%>:<%=svcPort%>
 <% if (mongodb || postgresql || kafka || mongodb || redis) {%>
     depends_on:
 <% if (mongodb) { %>
