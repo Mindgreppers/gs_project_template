@@ -35,7 +35,7 @@ tasks:
               code: 200,
               success : true,
               data: outputs.step1.data.json,
-              message: ''
+              headers: outputs.step1.data.headers
           } else {
               code: 500,
               success : false,

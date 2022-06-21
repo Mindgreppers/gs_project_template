@@ -33,14 +33,14 @@ tasks:
       fn: com.gs.transform
       args: |
         <%
-          if outputs.step1.data.json.code == 200 then {
-              code: 200,
-              success : true,
-              data: outputs.step1.data.json,
-              message: ''
-          } else {
-              code: 500,
-              success : false,
-              message: 'error in step1'
-          }
+        if outputs.step1.data.json.code == 200 then {
+            code: 200,
+            success : true,
+            data: outputs.step1.data.json,
+            message: ''
+        } else {
+            code: 500,
+            success : false,
+            message: 'error in step1'
+        }
         %>
