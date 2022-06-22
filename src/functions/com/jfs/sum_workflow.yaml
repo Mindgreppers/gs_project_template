@@ -5,7 +5,7 @@ description: Here we sum two hardcoded x and y values. Feel free to try using AP
 tasks:
     - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
       description: add two numbers
-      fn: com.biz.sum
+      fn: com.jfs.sum
       args:
         x: 1
         y: 2

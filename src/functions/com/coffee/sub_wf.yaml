@@ -3,7 +3,7 @@
 summary: Multiplexing create loan for hdfc api calls
 id: create_sub1
 tasks:
-    - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
+    - id: sub_step1 # the response of this will be accessible within the parent step key, under the step1 sub key
       description: create account in the bank
       fn: com.gs.http
       args:
@@ -29,18 +29,17 @@ tasks:
       on_error:
         continue: true
 
-    - id: step2
+    - id: sub_step2
       fn: com.gs.transform
       args: |
-        <%
-        if outputs.step1.data.json.code == 200 then {
-            code: 200,
-            success : true,
-            data: outputs.step1.data.json,
-            message: ''
-        } else {
-            code: 500,
-            success : false,
-            message: 'error in step1'
-        }
-        %>
+          <% if outputs.sub_step1.data.json.code == 200 then {
+              code: 200,
+              success: true,
+              data: outputs.sub_step1.data.json,
+              headers: outputs.sub_step1.data.headers,
+              message: 'sub'
+          } else {
+              code: 500,
+              success: false,
+              message: 'error in sub_step1'
+          } %>
