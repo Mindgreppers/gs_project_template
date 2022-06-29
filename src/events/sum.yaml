@@ -2,5 +2,17 @@
   fn: com.biz.sum_workflow
   summary: A workflow involving developer written JS function
   description: This workflow invokes a developer defined function at path com.biz.sum
+  produces:
+    - application/json
+  parameters:
+    - name: status
+      in: query
+      type: integer
   responses:
+    '200':
+      description: Returns the sum of two numbers.
+      schema:
+        type: integer
+    '400':
+      description: Invalid status value
     

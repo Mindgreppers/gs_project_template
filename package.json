@@ -17,5 +17,8 @@
     "nodemon": "^2.0.15",
     "pino-pretty": "^7.6.1",
     "prisma": "^3.14.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.15.2"
   }
 }
