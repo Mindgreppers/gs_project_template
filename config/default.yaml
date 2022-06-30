@@ -3,5 +3,5 @@ api_version: "1.0"
 lang: coffee
 httpbin:
   base_url: https://httpbin.org
-kafka:
-  client_id: 1
+# kafka:
+#   client_id: 1
