@@ -11,7 +11,7 @@
             },
             {
                 "match": "\\.(prisma)$",
-                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file}"
+                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file} && npm run copy"
             }
         ]
     },
