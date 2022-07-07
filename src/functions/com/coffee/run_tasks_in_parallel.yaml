@@ -9,22 +9,18 @@ tasks:
     tasks:
       - id: 1st
         fn: com.gs.return
-        args: |
-          'parallel task1' 
-      
+        args: 'parallel task1' 
       - id: 2nd
         fn: com.gs.return
-        args: |
-          'parallel task2'  
-      
+        args: 'parallel task2'  
       - id: 3rd
         fn: com.gs.return
-        args: |
-          'parallel task3'
+        args: 'parallel task3'
 
-  - id: step2
+  - id: parallel_step2
     fn: com.gs.transform
     args: |
         <% { 
           code: 200,
-        } + outputs['1st'] %>
+          data: outputs['1st']
+        } %>
