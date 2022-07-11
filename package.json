@@ -9,8 +9,8 @@
     "copy": "rsync -rv src/* config ../gs_service/dist && touch ../gs_service/dist/app.js",
     "build": "mkdir -p ../gs_service/project && rsync --delete -rv src config ../gs_service/project/ && npm i && cd ../gs_service && npm run build",
     "gen-apiDocs": "node ../gs_service/dist/api-specs/api-spec.js | pino-pretty",
-    "gen-testSuite": "npm run gen-apiDocs && openapi2postmanv2 -s docs/api-doc.json -o docs/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
-    "test": "newman run docs/testSuite.json",
+    "gen-testSuite": "npm run gen-apiDocs && openapi2postmanv2 -s docs/api-doc.json -o tests/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
+    "test": "newman run tests/testSuite.json",
     "test-cov": "cd ../gs_service && npm run test-cov"
   },
   "author": "",
