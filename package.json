@@ -11,7 +11,8 @@
     "gen-apiDocs": "node ../gs_service/dist/api-specs/api-spec.js | pino-pretty",
     "gen-testSuite": "npm run gen-apiDocs && mkdir -p tests && openapi2postmanv2 -s docs/api-doc.yaml -o tests/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
     "test": "newman run tests/testSuite.json",
-    "test-cov": "cd ../gs_service && npm run test-cov"
+    "test-cov": "cd ../gs_service && npm run test-cov",
+    "gen-crud-api": "npx godspeed-crud-api-generator"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",
+    "godspeed-crud-api-generator": "^1.2.0",
     "newman": "^5.3.2",
     "openapi-to-postmanv2": "^3.2.1"
   }
