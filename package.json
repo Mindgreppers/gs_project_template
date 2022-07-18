@@ -9,7 +9,8 @@
     "dev": "nodemon --watch ../gs_service/dist -r ../gs_service/dist/core/logger.js -r ../gs_service/dist/telemetry/tracing.js ../gs_service/dist/app.js | pino-pretty",
     "clean": "cd ../gs_service && npm run clean",
     "copy": "rsync -rv src/* config ../gs_service/dist && touch ../gs_service/dist/app.js",
-    "build": "mkdir -p ../gs_service/project && rsync --delete -rv src config ../gs_service/project/ && npm i && cd ../gs_service && npm run build"
+    "build": "mkdir -p ../gs_service/project && rsync --delete -rv src config ../gs_service/project/ && npm i && cd ../gs_service && npm run build",
+    "gen-crud-api": "npx godspeed-crud-api-generator"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "prisma": "^3.14.0"
   },
   "dependencies": {
-    "@prisma/client": "^3.15.2"
+    "@prisma/client": "^3.15.2",
+    "godspeed-crud-api-generator": "1.2.0"
   }
 }
