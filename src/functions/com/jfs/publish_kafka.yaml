@@ -1,0 +1,9 @@
+summary: publish kafka webhook
+tasks:
+  - id: kafka_step1
+    fn: com.gs.message_bus
+    args:
+      datasource: kafka1
+      data: <% inputs %>
+      config:
+        topic: kafka-producer1
