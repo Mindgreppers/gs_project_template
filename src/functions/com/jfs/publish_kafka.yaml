@@ -1,9 +1,13 @@
-summary: publish kafka webhook
+summary: Handle kafka event
+id: some_unique_id
 tasks:
-  - id: kafka_step1
-    fn: com.gs.message_bus
-    args:
+  - id: step1
+    summary: Publish an event with this data
+    fn: com.gs.kafka
+    args: # similar to Axios format
       datasource: kafka1
-      data: <% inputs %>
       config:
-        topic: kafka-producer1
+        method: publish
+        topic: publish-producer1 
+      data: <% inputs %>
+    # Here we are publishing an event data to another topic
