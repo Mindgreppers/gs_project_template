@@ -22,7 +22,7 @@
     "prisma": "^4.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^4.0.0",
+    "@prisma/client": "^3.14.0",
     "godspeed-crud-api-generator": "^1.4.0",
     "newman": "^5.3.2",
     "openapi-to-postmanv2": "^3.2.1"
