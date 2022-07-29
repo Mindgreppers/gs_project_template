@@ -1,6 +1,6 @@
 FROM adminmindgrep/gs_service:1.0.12
 ARG USERNAME=node
-ARG USER_UID=1000
+ARG USER_UID
 ARG USER_GID=$USER_UID
 USER root
 RUN sudo groupmod --gid $USER_GID $USERNAME \

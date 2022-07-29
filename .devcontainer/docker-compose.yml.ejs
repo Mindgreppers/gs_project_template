@@ -5,6 +5,8 @@ services:
     command: bash -c "sleep infinity"
     build:
       context: .
+      args:
+        USER_UID: <%=userUID%>
     environment:
       - SHELL=/bin/bash
       - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/<%=mongoDbName%>
@@ -77,12 +79,13 @@ services:
     image: docker.io/bitnami/kafka:3.1
     ports:
       - <%=kafkaPort%>:9092
+      - 9094:9094
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_LISTENERS=INTERNAL://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094
-      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://localhost:9094
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://kafka:9094
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
       - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
     depends_on:
