@@ -12,7 +12,8 @@
     "gen-testSuite": "npm run gen-apiDocs && mkdir -p tests && openapi2postmanv2 -s docs/api-doc.yaml -o tests/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
     "test": "newman run tests/testSuite.json",
     "test-cov": "cd ../gs_service && npm run test-cov",
-    "gen-crud-api": "npx godspeed-crud-api-generator"
+    "gen-crud-api": "npx godspeed-crud-api-generator",
+    "eg-push": "DEBUG=*,-elasticsearch node ../gs_service/elasticgraph/lib/mappingGenerator/reIndexer.js"
   },
   "author": "",
   "license": "ISC",
