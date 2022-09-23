@@ -22,7 +22,7 @@ tasks:
           method: post
 
       retry: #Kestra spec compliant retry mechanism. By default turned off.
-        maxAttempt: 5
+        max_attempts: 5
         type: constant
         interval: PT15M
 
