@@ -1,0 +1,151 @@
+[merchantName]
+type = 'String'
+isRequired = true
+sort = true
+
+[mobileNumber]
+type ="String"
+isRequired = false
+sort = true
+encrypted = true
+
+[isPQ]
+type ="String"
+isRequired = false
+
+[gmvDec2020]
+type = "Number"
+
+[gmvJan2021]
+type = "Number"
+
+[gmvFeb2021]
+type = "Number"
+
+[companyName]
+type = "String"
+isRequired = false
+sort = true
+
+[qrString]
+type = "String"
+isRequired = false
+sort = true
+encypted= true
+
+[panNumber]
+type = "String"
+isRequired = false
+sort = true
+encrypted = true
+
+[panName]
+type = "String"
+isRequired = false
+sort = true
+encrypted = true
+
+[gstNumber]
+type = ["String"]
+isRequired = false
+encrypted = true
+
+[legalName]
+type = "String"
+isRequired = false
+encrypted = true
+
+[tradeName]
+type = "String"
+isRequired=false
+encrypted = true
+
+[dob]
+type = 'String'
+isRequired = false
+sort = true
+encrypted = true
+
+[officialEmailId]
+type = "String"
+isRequired = false
+sort = true
+encrypted = true
+
+[officeAddress]
+type = "String"
+isRequired = false
+sort = true
+
+[officeCity]
+type = "String"
+isRequired = false
+sort = true
+
+[officeState]
+type = "String"
+isRequired = false
+sort = true
+
+[officePinCode]
+type = "Number"
+isRequired = false
+sort = true
+
+[externalID]
+type = 'String'
+isRequired = true
+sort = true
+
+[merchantID]
+type = 'String'
+isRequired = true
+sort = true
+
+[isEligible]
+type = "Boolean"
+isRequired = true
+sort = true
+
+[eligibleProducts]
+type = ['String']
+sort = true
+
+[posID]
+type = "Number"
+isRequired = true
+sort = true
+
+[vintage]
+type = "Number"
+isRequired = true
+sort = true
+
+
+[activeOn]
+type = ["String"]
+isRequired = false
+
+
+[merchantType]
+type = "String"
+isRequired = false
+sort = true
+
+[merchantBank]
+type = "String"
+isRequired = false
+sort = true
+
+[QRStatus]
+type = "String"
+isRequired = false
+sort = true
+
+[QRCredentials]
+type = "String"
+isRequired = false
+sort = true
+
+[gmvs]
+type=["Object"]
