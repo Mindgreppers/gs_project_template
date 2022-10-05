@@ -1,5 +1,3 @@
 {
-    "recommendations": [
-        "emeraldwalk.RunOnSave"
-    ]
+  "recommendations": ["emeraldwalk.RunOnSave", "Prisma.prisma"]
 }
