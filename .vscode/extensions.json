@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "emeraldwalk.RunOnSave"
+        "emeraldwalk.RunOnSave",
+        "Prisma.prisma"
     ]
 }
