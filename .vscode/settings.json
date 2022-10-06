@@ -6,19 +6,12 @@
                 "cmd": "npm run copy"
             },
             {
-                "match": "\\.(ts)$",
-                "cmd": "npm run build"
-            },
-            {
                 "match": "\\.(prisma)$",
                 "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file} && npm run copy"
             }
         ]
     },
     "files.exclude": {
-        "**/gs_service": true,
-        "**/node_modules": true,
-        "**/package*": true,
-        "**/.*": true
+        "**/node_modules": true
     }
 }

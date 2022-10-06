@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch ../gs_service/dist -r ../gs_service/dist/telemetry/tracing.js ../gs_service/dist/app.js | pino-pretty",
-    "clean": "cd ../gs_service && npm run clean",
-    "copy": "rsync -rv src/* config ../gs_service/dist && touch ../gs_service/dist/app.js",
-    "build": "mkdir -p ../gs_service/project && rsync --delete -rv src config ../gs_service/project/ && npm i && cd ../gs_service && npm run build",
-    "gen-apiDocs": "node ../gs_service/dist/api-specs/api-spec.js | pino-pretty",
+    "dev": "nodemon --watch ../gs_service/dist -r ./gs_service/dist/telemetry/tracing.js ./gs_service/dist/app.js | pino-pretty",
+    "clean": "cd gs_service && npm run clean",
+    "copy": "rsync -rv src/* config gs_service/dist && touch gs_service/dist/app.js",
+    "build": "mkdir -p gs_service/project && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build",
+    "gen-apiDocs": "node gs_service/dist/api-specs/api-spec.js | pino-pretty",
     "gen-testSuite": "npm run gen-apiDocs && mkdir -p tests && openapi2postmanv2 -s docs/api-doc.yaml -o tests/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
     "test": "newman run tests/testSuite.json",
-    "test-cov": "cd ../gs_service && npm run test-cov",
+    "test-cov": "cd gs_service && npm run test-cov",
     "gen-crud-api": "npx godspeed-crud-api-generator",
-    "eg-push": "DEBUG=*,-elasticsearch node ../gs_service/elasticgraph/lib/mappingGenerator/reIndexer.js"
+    "eg-push": "DEBUG=*,-elasticsearch node gs_service/elasticgraph/lib/mappingGenerator/reIndexer.js"
   },
   "author": "",
   "license": "ISC",
