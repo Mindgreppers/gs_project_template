@@ -1,0 +1,3 @@
+[submodule "gs_service"]
+	path = gs_service
+	url = git@github.com:Mindgreppers/gs_service.git
