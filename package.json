@@ -13,8 +13,8 @@
     "gen-crud-api": "npx godspeed-crud-api-generator",
     "prisma-push": "for i in src/datasources/*.prisma; do npx --yes prisma generate --schema $i && npx --yes prisma db push --schema $i; done;",
     "gen-api-docs": "node ../gs_service/dist/api-specs/api-spec.js | pino-pretty",
-    "gen-test-suite": "npm run gen-api-docs && mkdir -p tests && openapi2postmanv2 -s docs/api-doc.yaml -o tests/testSuite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
-    "test": "newman run tests/testSuite.json",
+    "gen-test-suite": "npm run gen-api-docs && mkdir -p tests && openapi2postmanv2 -s docs/api-doc.yaml -o tests/test-suite.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false",
+    "test": "newman run tests/test-suite.json",
     "test-cov": "cd ../gs_service && npm run test-cov"
   },
   "author": "",
