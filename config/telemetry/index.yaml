@@ -1,4 +1,0 @@
-log_level: 'DiagLogLevel.INFO'
-metrics:
-  export:
-    interval: 3000
