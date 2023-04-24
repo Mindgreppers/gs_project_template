@@ -1,0 +1,9 @@
+summary: Fetch many Owner
+tasks:
+  - id: postgres_owner_search
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data: <% inputs.body %>
+      config:
+        method: Owner.findMany

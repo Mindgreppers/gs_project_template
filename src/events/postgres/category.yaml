@@ -1,0 +1,88 @@
+# ONE
+/postgres/category/:id.http.get:
+  summary: Fetch Category
+  description: Fetch Category from database
+  fn: com.biz.postgres.category.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/category.http.post:
+  summary: Create a new Category
+  description: Create Category from database
+  fn: com.biz.postgres.category.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Category'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/category/:id.http.put:
+  summary: Update a Category
+  description: Update Category from database
+  fn: com.biz.postgres.category.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Category'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/category/:id.http.delete:
+  summary: Delete a Category
+  description: Delete Category from database
+  fn: com.biz.postgres.category.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/category/search.http.post:
+  summary: Fetch multiple Category
+  description: Fetch multiple Category from database
+  fn: com.biz.postgres.category.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

@@ -1,0 +1,11 @@
+summary: Fetch Owner
+tasks:
+  - id: postgres_owner_one
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: Owner.findUnique

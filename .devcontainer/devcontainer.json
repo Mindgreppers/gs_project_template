@@ -1,0 +1,22 @@
+{
+    "name": "restaurant-app",
+    "forwardPorts": [3000],
+    "remoteUser": "node",
+    "settings": {
+      "terminal.integrated.profiles.linux": {
+        "node bash": {
+          "path": "/bin/bash"
+        }
+      },
+      "terminal.integrated.defaultProfile.linux": "node bash",
+      "debug.node.autoAttach": "disabled"
+    },
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "node",
+    "workspaceFolder": "/workspace/development/app",
+    "shutdownAction": "stopCompose",
+    "extensions": [
+		"dbaeumer.vscode-eslint",
+		"emeraldwalk.RunOnSave"
+    ]
+}

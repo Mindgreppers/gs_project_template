@@ -1,0 +1,12 @@
+summary: Update MenuItems
+tasks:
+  - id: postgres_menuitems_update
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+        data: <% inputs.body %>
+      config:
+        method: MenuItems.update

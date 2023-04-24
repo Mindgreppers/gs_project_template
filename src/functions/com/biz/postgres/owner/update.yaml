@@ -1,0 +1,12 @@
+summary: Update Owner
+tasks:
+  - id: postgres_owner_update
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+        data: <% inputs.body %>
+      config:
+        method: Owner.update

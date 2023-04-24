@@ -1,4 +1,0 @@
-type: elasticgraph
-schema_backend: /workspace/development/app/src/datasources/eg_config/eg1/ # schema path to config files
-deep: false # deep feature of elasticgraph to use graph algorithms
-collect: true # collect feature of elasticsearch

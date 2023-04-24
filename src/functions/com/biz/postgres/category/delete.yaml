@@ -1,0 +1,11 @@
+summary: Delete Category
+tasks:
+  - id: postgres_category_delete
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: Category.delete

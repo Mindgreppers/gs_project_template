@@ -1,0 +1,88 @@
+# ONE
+/postgres/owner/:id.http.get:
+  summary: Fetch Owner
+  description: Fetch Owner from database
+  fn: com.biz.postgres.owner.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/owner.http.post:
+  summary: Create a new Owner
+  description: Create Owner from database
+  fn: com.biz.postgres.owner.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Owner'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/owner/:id.http.put:
+  summary: Update a Owner
+  description: Update Owner from database
+  fn: com.biz.postgres.owner.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Owner'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/owner/:id.http.delete:
+  summary: Delete a Owner
+  description: Delete Owner from database
+  fn: com.biz.postgres.owner.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/owner/search.http.post:
+  summary: Fetch multiple Owner
+  description: Fetch multiple Owner from database
+  fn: com.biz.postgres.owner.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+
