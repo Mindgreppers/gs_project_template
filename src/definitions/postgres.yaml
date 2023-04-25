@@ -1,0 +1,93 @@
+Owner:
+  type: object
+  properties:
+    email:
+      type: string
+    name:
+      type: string
+      nullable: true
+Restaurant:
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: date-time
+    name:
+      type: string
+    since:
+      type: string
+      format: date-time
+    isOpen:
+      type: boolean
+      default: false
+    opsStartTime:
+      type: string
+      format: date-time
+    opsEndTime:
+      type: string
+      format: date-time
+    ownerId:
+      type: integer
+      nullable: true
+    slug:
+      type: string
+    description:
+      type: string
+      nullable: true
+    location:
+      type: string
+Category:
+  type: object
+  properties:
+    name:
+      type: string
+MenuItems:
+  type: object
+  properties:
+    name:
+      type: string
+    description:
+      type: string
+      nullable: true
+    price:
+      type: integer
+    couponCode:
+      type: array
+      items:
+        type: string
+    restaurantId:
+      type: integer
+Order:
+  type: object
+  properties:
+    frmoRestaurant:
+      type: integer
+    orderStatus:
+      type: string
+      default: NOT_INITIATED
+      enum:
+        - INITIATED
+        - NOT_INITIATED
+        - WAITING_FOR_APPROVAL_FROM_RESTAURANT
+        - WAITING_FOR_DELIVERY_PARTNER
+        - PLACED
+        - PICKUP_BY_DELIVERY_PARTNER
+        - DELIVERED
+        - READY_TO_PICKUP
+    placedAt:
+      type: string
+      format: date-time
+      nullable: true
+    fulfilledAt:
+      type: string
+      format: date-time
+      nullable: true
+OrderItem:
+  type: object
+  properties:
+    menuItemId:
+      type: integer
+    quantity:
+      type: integer
+    orderId:
+      type: integer

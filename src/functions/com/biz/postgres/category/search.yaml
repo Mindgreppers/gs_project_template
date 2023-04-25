@@ -1,0 +1,9 @@
+summary: Fetch many Category
+tasks:
+  - id: postgres_category_search
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data: <% inputs.body %>
+      config:
+        method: Category.findMany

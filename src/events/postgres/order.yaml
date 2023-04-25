@@ -1,0 +1,88 @@
+# ONE
+/postgres/order/:id.http.get:
+  summary: Fetch Order
+  description: Fetch Order from database
+  fn: com.biz.postgres.order.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/order.http.post:
+  summary: Create a new Order
+  description: Create Order from database
+  fn: com.biz.postgres.order.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Order'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/order/:id.http.put:
+  summary: Update a Order
+  description: Update Order from database
+  fn: com.biz.postgres.order.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Order'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/order/:id.http.delete:
+  summary: Delete a Order
+  description: Delete Order from database
+  fn: com.biz.postgres.order.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/order/search.http.post:
+  summary: Fetch multiple Order
+  description: Fetch multiple Order from database
+  fn: com.biz.postgres.order.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

@@ -1,0 +1,11 @@
+summary: Delete MenuItems
+tasks:
+  - id: postgres_menuitems_delete
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: MenuItems.delete
