@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch ../gs_service/dist -r ./gs_service/dist/telemetry/tracing.js ./gs_service/dist/app.js | pino-pretty",
+    "dev": "nodemon --watch ./gs_service/dist -r ./gs_service/dist/telemetry/tracing.js ./gs_service/dist/app.js",
     "clean": "cd gs_service && npm run clean",
     "copy": "rsync -rv src/* config gs_service/dist && touch gs_service/dist/app.js",
     "build": "mkdir -p gs_service/project && rsync --delete -rv src config gs_service/project/ && npm i && cd gs_service && npm run build",
