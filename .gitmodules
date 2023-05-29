@@ -1,4 +1,4 @@
 [submodule "gs_service"]
 	path = gs_service
-	url = git@github.com:godspeedsystems/gs-node-service.git
+	url = https://github.com/godspeedsystems/gs-node-service.git
 	branch = dev
