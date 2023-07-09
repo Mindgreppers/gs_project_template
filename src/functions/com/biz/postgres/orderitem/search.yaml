@@ -1,0 +1,9 @@
+summary: Fetch many OrderItem
+tasks:
+  - id: postgres_orderitem_search
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data: <% inputs.body %>
+      config:
+        method: OrderItem.findMany

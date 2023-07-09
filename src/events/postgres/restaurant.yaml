@@ -1,0 +1,88 @@
+# ONE
+/postgres/restaurant/:id.http.get:
+  summary: Fetch Restaurant
+  description: Fetch Restaurant from database
+  fn: com.biz.postgres.restaurant.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/restaurant.http.post:
+  summary: Create a new Restaurant
+  description: Create Restaurant from database
+  fn: com.biz.postgres.restaurant.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Restaurant'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/restaurant/:id.http.put:
+  summary: Update a Restaurant
+  description: Update Restaurant from database
+  fn: com.biz.postgres.restaurant.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Restaurant'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/restaurant/:id.http.delete:
+  summary: Delete a Restaurant
+  description: Delete Restaurant from database
+  fn: com.biz.postgres.restaurant.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/restaurant/search.http.post:
+  summary: Fetch multiple Restaurant
+  description: Fetch multiple Restaurant from database
+  fn: com.biz.postgres.restaurant.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

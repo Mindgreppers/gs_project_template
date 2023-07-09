@@ -1,0 +1,88 @@
+# ONE
+/postgres/menuitems/:id.http.get:
+  summary: Fetch MenuItems
+  description: Fetch MenuItems from database
+  fn: com.biz.postgres.menuitems.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/menuitems.http.post:
+  summary: Create a new MenuItems
+  description: Create MenuItems from database
+  fn: com.biz.postgres.menuitems.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/MenuItems'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/menuitems/:id.http.put:
+  summary: Update a MenuItems
+  description: Update MenuItems from database
+  fn: com.biz.postgres.menuitems.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/MenuItems'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/menuitems/:id.http.delete:
+  summary: Delete a MenuItems
+  description: Delete MenuItems from database
+  fn: com.biz.postgres.menuitems.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/menuitems/search.http.post:
+  summary: Fetch multiple MenuItems
+  description: Fetch multiple MenuItems from database
+  fn: com.biz.postgres.menuitems.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

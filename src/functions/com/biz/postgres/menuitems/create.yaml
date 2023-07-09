@@ -1,0 +1,10 @@
+summary: Create MenuItems
+tasks:
+  - id: postgres_menuitems_create
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        data: <% inputs.body %>
+      config:
+        method: MenuItems.create

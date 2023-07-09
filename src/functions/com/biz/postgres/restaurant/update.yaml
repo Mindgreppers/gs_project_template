@@ -1,0 +1,12 @@
+summary: Update Restaurant
+tasks:
+  - id: postgres_restaurant_update
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+        data: <% inputs.body %>
+      config:
+        method: Restaurant.update

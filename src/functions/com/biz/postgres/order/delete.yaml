@@ -1,0 +1,11 @@
+summary: Delete Order
+tasks:
+  - id: postgres_order_delete
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: Order.delete

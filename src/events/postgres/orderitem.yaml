@@ -1,0 +1,88 @@
+# ONE
+/postgres/orderitem/:id.http.get:
+  summary: Fetch OrderItem
+  description: Fetch OrderItem from database
+  fn: com.biz.postgres.orderitem.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/orderitem.http.post:
+  summary: Create a new OrderItem
+  description: Create OrderItem from database
+  fn: com.biz.postgres.orderitem.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/OrderItem'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/orderitem/:id.http.put:
+  summary: Update a OrderItem
+  description: Update OrderItem from database
+  fn: com.biz.postgres.orderitem.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/OrderItem'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/orderitem/:id.http.delete:
+  summary: Delete a OrderItem
+  description: Delete OrderItem from database
+  fn: com.biz.postgres.orderitem.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/orderitem/search.http.post:
+  summary: Fetch multiple OrderItem
+  description: Fetch multiple OrderItem from database
+  fn: com.biz.postgres.orderitem.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+
