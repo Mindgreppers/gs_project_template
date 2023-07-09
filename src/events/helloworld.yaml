@@ -1,5 +1,5 @@
 '/helloworld.http.get': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.biz.helloworld
+  fn: com.jfs.helloworld
   summary: hello world
   description: print hello world
   produces:
@@ -7,7 +7,8 @@
   parameters:
     - name: status
       in: query
-      type: string
+      schema:
+        type: string
   responses:
     '200':
       description: Returns the greeting.

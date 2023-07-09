@@ -1,5 +1,5 @@
-'/anything.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
-  fn: com.jfs.httpbin_anything
+'/anything_coffee.http.post': # event id. Will include path params. For ex. com.abc.do_kyc/{bank_id}/process/{user_id}
+  fn: com.coffee.httpbin_anything_coffee
   data: 
     examples: # <string, ExampleObject>
     schema:

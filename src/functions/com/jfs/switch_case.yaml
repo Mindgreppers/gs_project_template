@@ -21,9 +21,9 @@ tasks:
         id: default_case
         fn: com.gs.return
         args: "'case - default'"
-  - id: step2
+  - id: step2_switch
     fn: com.gs.transform
     args: |
-        <% { 
-          code: 200,
-        } + outputs.step1_switch %>
+        <js% 
+          { code: 200, ...outputs.step1_switch }
+        %>
