@@ -1,13 +1,13 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated-clients/postgres"
+  output   = "./generated-clients/mysql"
   previewFeatures = ["metrics"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_URL")
+  provider = "mysql"
+  url      = env("MYSQL_URL")
 }
 
 model User {

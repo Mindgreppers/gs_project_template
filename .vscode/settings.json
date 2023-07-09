@@ -11,14 +11,18 @@
             },
             {
                 "match": "\\.(prisma)$",
-                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file}"
+                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file} && npm run copy"
+            },
+            {
+                "match": "\\.(toml)$",
+                "cmd": "npm run copy && npm run eg-push"
             }
-        ]
+	]
     },
     "files.exclude": {
         "**/gs_service": true,
         "**/node_modules": true,
         "**/package*": true,
-        "**/.*": true
+        "**/.*": true    
     }
 }

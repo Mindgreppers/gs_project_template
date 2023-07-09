@@ -2,18 +2,18 @@
 # Environment variables will be loaded in config files via some convention
 summary: Call an API and transform the 
 tasks:
-    - id: step1 # the response of this will be accessible within the parent step key, under the step1 sub key
+    - id: httpbin_step1 # the response of this will be accessible within the parent step key, under the step1 sub key
       description: Hit http bin with some dummy data. It will send back same as response
       fn: com.gs.http
       args:
         datasource: httpbin
         params:
         data:
-            application_id: <% 'PSAM-' + randomString(5, '0123456789') %>
+            application_id: 'PSAM-12345'
             mobile_number: "9999888877"
-            personal_email_id: <%std.get(inputs.body, 'alaeforwich', 'ala.eforwich@email.com')%>
+            personal_email_id: 'ala.eforwich@email.com'
             customer_consent: true
-            gender: <% std.get(mappings.Gender, inputs.body.Gender) %>
+            gender: <% inputs.body.Gender %>
             date_of_birth: "21-06-1991"
             pan_number: "AZOPB8813Y"
             customer_name: "Ala Eforwich"
@@ -24,21 +24,24 @@ tasks:
           method: post
 
       retry: #Kestra spec compliant retry mechanism. By default turned off.
-        maxAttempt: 5
+        max_attempts: 5
         type: constant
         interval: PT15M
 
-    - id: step2
+    - id: httpbin_step2
       fn: com.gs.transform
       args: |
-          <% if outputs.step1.data.json.code == 200 then {
+          <js% if(outputs.httpbin_step1.data.json.code == 200) {
+            return {
               code: 200,
-              success : true,
-              data: outputs.step1.data.json,
-              headers: outputs.step1.data.headers
+              success: true,
+              data: outputs.httpbin_step1.data.json,
+              headers: outputs.httpbin_step1.data.headers
+            };
           } else {
+            return {
               code: 500,
               success : false,
-              message: 'error in step1'
-          } %>
-              
+              message: 'error in httpbin_step1'
+            }
+          } %>  

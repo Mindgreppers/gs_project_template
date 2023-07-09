@@ -5,10 +5,17 @@ services:
     command: bash -c "sleep infinity"
     build:
       context: .
+      args:
+        USER_UID: <%=userUID%>
     environment:
       - SHELL=/bin/bash
       - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/<%=mongoDbName%>
+    <% if (postgresql) { %>
       - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/<%=postgresDbName%>
+    <% } %>          
+    <% if (mysql) { %>
+      - MYSQL_URL=mysql://root:root@mysql:3306/<%=mysqlDbName%>
+    <% } %>          
       - PORT=<%=svcPort%>
     volumes:
       - ..:/workspace/development/app:cached
@@ -16,7 +23,7 @@ services:
     working_dir: /workspace/development/app
     ports:
       - <%=svcPort%>:<%=svcPort%>
-<% if (mongodb || postgresql || kafka || mongodb || redis) {%>
+<% if (mongodb || postgresql || kafka || mongodb || redis || mysql) {%>
     depends_on:
 <% if (mongodb) { %>
       - mongodb1
@@ -32,6 +39,9 @@ services:
 <% } %>
 <% if (redis) { %>
       - redis
+<% } %>
+<% if (mysql) { %>
+      - mysql
 <% } %>
 <% } %>
 
@@ -65,6 +75,22 @@ services:
       - postgresql-data:/var/lib/postgresql/data
 
 <% } %>
+
+<% if (mysql) { %>
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password --lower_case_table_names=1
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=<%=mysqlDbName%>
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+    - <%=mysqlDbPort%>:3306
+
+<% } %>
+
 <% if (kafka) { %>
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
@@ -77,12 +103,13 @@ services:
     image: docker.io/bitnami/kafka:3.1
     ports:
       - <%=kafkaPort%>:9092
+      - 9094:9094
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_LISTENERS=INTERNAL://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094
-      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://localhost:9094
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://kafka:9094
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
       - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
     depends_on:
@@ -135,7 +162,7 @@ services:
 
 <% } %>
 
-<% if (elasticsearch || postgresql || kafka || mongodb) { %>
+<% if (elasticsearch || postgresql || kafka || mongodb || mysql) { %>
 volumes:
 <% if (elasticsearch) { %>
   elasticsearch-data:
@@ -152,5 +179,9 @@ volumes:
   mongodb2-data:
   mongodb3-data:    
 <% } %>
+<% if (mysql) { %>
+  mysql-data:
+<% } %>
+
 <% } %>
 
