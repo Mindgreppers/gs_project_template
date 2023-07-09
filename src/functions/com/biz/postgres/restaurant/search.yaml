@@ -7,3 +7,6 @@ tasks:
       data: <% inputs.body %>
       config:
         method: Restaurant.findMany
+        where: 
+          city: { equals: "<% inputs.body.city %>" }
+          menuItems: { some: { couponCode: { equals: "<% inputs.body.couponCode %>" } } }

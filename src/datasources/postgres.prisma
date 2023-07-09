@@ -62,6 +62,7 @@ model OrderItem {
   orderId    Int
 }
 
+// 
 enum OrderStatus {
   INITIATED
   NOT_INITIATED
