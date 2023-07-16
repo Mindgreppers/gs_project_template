@@ -1,0 +1,5 @@
+type: api
+base_url: <% config.twilio.base_url %>
+
+headers:
+  Authorization: <% config.twilio_service.auth_token %>

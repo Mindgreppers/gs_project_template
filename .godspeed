@@ -1,0 +1,1 @@
+{"projectName":"light-house-canton","mongodb":false,"postgresql":false,"kafka":false,"elasticsearch":false,"redis":false,"svcPort":8080,"mysql":false}

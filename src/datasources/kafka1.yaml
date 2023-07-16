@@ -1,3 +1,0 @@
-type: kafka
-client_id: kafka_proj
-brokers: [ "kafka:9092" ]

@@ -1,6 +1,0 @@
-maxConnections = 200
-apiVersion = '7.4'
-requestTimeout = 90000
-node = 'http://elasticsearch:9200'
-sniffOnStart = true
-ds = 'es' # OR 'es'
