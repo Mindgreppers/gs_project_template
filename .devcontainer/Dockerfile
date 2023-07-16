@@ -1,4 +1,4 @@
-FROM adminmindgrep/gs_service:latest
+FROM adminmindgrep/gs_service:1.0.12
 ARG USERNAME=node
 ARG USER_UID
 ARG USER_GID=$USER_UID
