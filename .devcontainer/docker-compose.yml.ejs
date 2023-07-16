@@ -10,12 +10,7 @@ services:
     environment:
       - SHELL=/bin/bash
       - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/<%=mongoDbName%>
-    <% if (postgresql) { %>
       - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/<%=postgresDbName%>
-    <% } %>          
-    <% if (mysql) { %>
-      - MYSQL_URL=mysql://root:root@mysql:3306/<%=mysqlDbName%>
-    <% } %>          
       - PORT=<%=svcPort%>
     volumes:
       - ..:/workspace/development/app:cached
@@ -23,7 +18,7 @@ services:
     working_dir: /workspace/development/app
     ports:
       - <%=svcPort%>:<%=svcPort%>
-<% if (mongodb || postgresql || kafka || mongodb || redis || mysql) {%>
+<% if (mongodb || postgresql || kafka || mongodb || redis) {%>
     depends_on:
 <% if (mongodb) { %>
       - mongodb1
@@ -39,9 +34,6 @@ services:
 <% } %>
 <% if (redis) { %>
       - redis
-<% } %>
-<% if (mysql) { %>
-      - mysql
 <% } %>
 <% } %>
 
@@ -75,22 +67,6 @@ services:
       - postgresql-data:/var/lib/postgresql/data
 
 <% } %>
-
-<% if (mysql) { %>
-  mysql:
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password --lower_case_table_names=1
-    restart: unless-stopped
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=<%=mysqlDbName%>
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-    - <%=mysqlDbPort%>:3306
-
-<% } %>
-
 <% if (kafka) { %>
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
@@ -162,7 +138,7 @@ services:
 
 <% } %>
 
-<% if (elasticsearch || postgresql || kafka || mongodb || mysql) { %>
+<% if (elasticsearch || postgresql || kafka || mongodb) { %>
 volumes:
 <% if (elasticsearch) { %>
   elasticsearch-data:
@@ -179,9 +155,5 @@ volumes:
   mongodb2-data:
   mongodb3-data:    
 <% } %>
-<% if (mysql) { %>
-  mysql-data:
-<% } %>
-
 <% } %>
 
