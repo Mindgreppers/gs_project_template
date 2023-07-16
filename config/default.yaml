@@ -2,16 +2,3 @@ log_level: info
 lang: coffee
 httpbin:
   base_url: https://httpbin.org
-
-twilio:
-  base_url: https://api.twilio.com/2010-04-01/Accounts
-  TWILIO_ACCOUNT_SID: AC366ba41677b6d257ce65acdd33c19681
-  TWILIO_AUTH_TOKEN: e8a113995369648371eacb5c2a06f3f4
-  TWILIO_PHONE_NUMBER: +16815785153
-  # CALL_SID: CA241b22d7513bbb940303f661dbb6623b
-
-twilio_service:
-  auth_token: Basic QUMzNjZiYTQxNjc3YjZkMjU3Y2U2NWFjZGQzM2MxOTY4MTplOGExMTM5OTUzNjk2NDgzNzFlYWNiNWMyYTA2ZjNmNA==
-
-s3_bucket: twilio-testing-ku
-

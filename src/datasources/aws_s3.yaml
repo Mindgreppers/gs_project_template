@@ -1,9 +1,0 @@
-type: aws
-common:
-    credentials:
-        accessKeyId: 'AKIA27FN7VE7WN2WIW4F'
-        secretAccessKey: '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'
-    region: "ap-south-1"
-services:
-    S3:
-        config: {}
