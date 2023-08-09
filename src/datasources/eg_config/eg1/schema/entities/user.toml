@@ -1,0 +1,16 @@
+[email]
+  type = 'String'
+[password]
+  type = "String"
+[username]
+  type = "String"
+  multiLingual = "true"
+[dob]
+  type = "String"
+[name]
+  type = "String"
+  autoSuggestion = true
+[prevNotificationTs]
+  type = "Date"
+[accountConfirmed]
+  type = "String"
