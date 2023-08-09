@@ -2,21 +2,26 @@
     "name": "<%=projectName%>",
     "forwardPorts": [<%=svcPort%>],
     "remoteUser": "node",
-    "settings": {
-      "terminal.integrated.profiles.linux": {
-        "node bash": {
-          "path": "/bin/bash"
-        }
-      },
-      "terminal.integrated.defaultProfile.linux": "node bash",
-      "debug.node.autoAttach": "disabled"
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.profiles.linux": {
+            "node bash": {
+              "path": "/bin/bash"
+            }
+          },
+          "terminal.integrated.defaultProfile.linux": "node bash"
+        },
+        "extensions": [
+          "emeraldwalk.RunOnSave",
+          "Prisma.prisma",
+          "42Crunch.vscode-openapi",
+          "ms-vscode.vscode-typescript-next"
+        ]
+      }
     },
     "dockerComposeFile": "./docker-compose.yml",
     "service": "node",
     "workspaceFolder": "/workspace/development/app",
     "shutdownAction": "stopCompose",
-    "extensions": [
-		"dbaeumer.vscode-eslint",
-		"emeraldwalk.RunOnSave"
-    ]
 }
