@@ -27,5 +27,6 @@
     "**/CVS": false,
     "**/node_modules": true,
     "**/Thumbs.db": false
-  }
+  },
+  "debug.allowBreakpointsEverywhere": true
 }
