@@ -1,28 +1,31 @@
 {
-    "emeraldwalk.runonsave": {
-        "commands": [
-            {
-                "match": "\\.(yaml|yml|js|json)$",
-                "cmd": "npm run copy"
-            },
-            {
-                "match": "\\.(ts)$",
-                "cmd": "npm run build"
-            },
-            {
-                "match": "\\.(prisma)$",
-                "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file} && npm run copy"
-            },
-            {
-                "match": "\\.(toml)$",
-                "cmd": "npm run copy && npm run eg-push"
-            }
-	]
-    },
-    "files.exclude": {
-        "**/gs_service": true,
-        "**/node_modules": true,
-        "**/package*": true,
-        "**/.*": true    
-    }
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(yaml|yml|js|json)$",
+        "cmd": "npm run copy"
+      },
+      {
+        "match": "\\.(ts)$",
+        "cmd": "npm run build"
+      },
+      {
+        "match": "\\.(prisma)$",
+        "cmd": "npx prisma generate --schema ${file} && npx prisma db push --schema ${file} && npm run copy"
+      },
+      {
+        "match": "\\.(toml)$",
+        "cmd": "npm run copy && npm run eg-push"
+      }
+    ]
+  },
+  "files.exclude": {
+    "**/.DS_Store": false,
+    "**/.git": false,
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false,
+    "**/node_modules": true,
+    "**/Thumbs.db": false
+  }
 }
