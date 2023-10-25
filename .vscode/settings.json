@@ -3,7 +3,7 @@
     "commands": [
       {
         "match": "\\.(yaml|yml|js|json)$",
-        "cmd": "npm run copy"
+        "cmd": "npm run copy && export PROJECT_ROOT_DIRECTORY=`pwd` && node ../gs_service/dist/core/transpiler.js"
       },
       {
         "match": "\\.(ts)$",
